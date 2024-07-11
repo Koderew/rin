@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:site_name" content="Calculator - Rural Inscribe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Just a basic online calculator!">
+    <meta property="og:image" content="https://ruralinscribe.net/hq-ri.net.png">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+        }
+
+
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+            background-color: rgb(0, 110, 255);
+        }
+
+        .calculator input[type="text"] {
+            background-color: green;
+            color: black;
+            font-family: calcFont;
+        }
+
+        @font-face {
+            font-family: calcFont;
+            src: url(DIGITALDREAM.ttf);
+        }
+
+        .calculator input[type="button"] {
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(0, 110, 255);
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 10px 5px 5px rgb(66, 66, 66);
+        }
+
+        .calculator input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        .calculator .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .notes {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .gray-box {
+            width: 160px;
+            height: 47px;
+            background-color: #6E645A;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <center>
+            <p style="color: black; font-size: large; margin-bottom: 0;">TC-<b>30XS</b></p>
+            <p style="color: black; margin-top: 0;"><i>MultiView</i></p>
+            <div class="gray-box" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"></div>
+        </center>
+        <br>
+        <input type="text" id="display" readonly>
+        <div class="row">
+            <input type="button" value="(" onclick="addToDisplay('(')">
+            <input type="button" value=")" onclick="addToDisplay(')')">
+            <input type="button" value="C" onclick="clearDisplay()">
+            <input type="button" value="/" onclick="addToDisplay('/')">
+        </div>
+        <div class="row">
+            <input type="button" value="7" onclick="addToDisplay('7')">
+            <input type="button" value="8" onclick="addToDisplay('8')">
+            <input type="button" value="9" onclick="addToDisplay('9')">
+            <input type="button" value="*" onclick="addToDisplay('*')">
+        </div>
+        <div class="row">
+            <input type="button" value="4" onclick="addToDisplay('4')">
+            <input type="button" value="5" onclick="addToDisplay('5')">
+            <input type="button" value="6" onclick="addToDisplay('6')">
+            <input type="button" value="-" onclick="addToDisplay('-')">
+        </div>
+        <div class="row">
+            <input type="button" value="1" onclick="addToDisplay('1')">
+            <input type="button" value="2" onclick="addToDisplay('2')">
+            <input type="button" value="3" onclick="addToDisplay('3')">
+            <input type="button" value="+" onclick="addToDisplay('+')">
+        </div>
+        <div class="row">
+            <input type="button" value="sqrt" onclick="calculateSqrt()">
+            <input type="button" value="0" onclick="addToDisplay('0')">
+            <input type="button" value="x^2" onclick="calculateSquare()">
+            <input type="button" value="sin" onclick="calculateSin()">
+            <input type="button" value="cos" onclick="calculateCos()">
+            <input type="button" value="tan" onclick="calculateTan()">
+            <input type="button" value="." onclick="addToDisplay('.')">
+            <input type="button" value="=" onclick="calculate()">
+        </div>
+    </div>
+
+    <center>
+        <textarea class="notes" placeholder="Write any notes here."></textarea>
+    </center>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            var result = eval(document.getElementById('display').value);
+            document.getElementById('display').value = result;
+        }
+
+        function calculateSqrt() {
+            var result = Math.sqrt(eval(document.getElementById('display').value));
+            document.getElementById('display').value = result;
+        }
+
+        function calculateSin() {
+            var result = Math.sin(eval(document.getElementById('display').value));
+            document.getElementById('display').value = result;
+        }
+
+        function calculateCos() {
+            var result = Math.cos(eval(document.getElementById('display').value));
+            document.getElementById('display').value = result;
+        }
+
+        function calculateTan() {
+            var result = Math.tan(eval(document.getElementById('display').value));
+            document.getElementById('display').value = result;
+        }
+
+        function calculateSquare() {
+            var result = Math.pow(eval(document.getElementById('display').value), 2);
+            document.getElementById('display').value = result;
+        }
+    </script>
+
+</body>
+
+</html>
